@@ -1,8 +1,19 @@
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { Label } from "@/components/ui/Label";
 import { EventPager } from "@/components/ui/Pagination";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/Select";
 import { Td, Th, Tr } from "@/components/ui/Table";
-import { Label } from "@radix-ui/react-label";
+
 import Head from "next/head";
 import { useState } from "react";
 
@@ -17,7 +28,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="min-h-screen flex flex-col justify-center items-center">
+      <main className="min-h-screen p-10 flex flex-col gap-5 justify-center items-center">
         <h1 className="text-3xl font-bold underline">Hello world!</h1>
 
         {/* buttone example */}
@@ -61,6 +72,34 @@ export default function Home() {
           <Label htmlFor="email">Email</Label>
           <Input type="email" id="email" placeholder="Email" />
         </div>
+
+        {/* select example */}
+        <Select>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Select a fruit" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Fruits</SelectLabel>
+              <SelectItem value="apple">Apple</SelectItem>
+              <SelectItem value="banana">Banana</SelectItem>
+              <SelectItem value="blueberry">Blueberry</SelectItem>
+              <SelectItem value="grapes">Grapes</SelectItem>
+              <SelectItem value="pineapple">Pineapple</SelectItem>
+            </SelectGroup>
+            <SelectSeparator />
+            <SelectGroup>
+              <SelectLabel>Vegetables</SelectLabel>
+              <SelectItem value="aubergine">Aubergine</SelectItem>
+              <SelectItem value="broccoli">Broccoli</SelectItem>
+              <SelectItem value="carrot" disabled>
+                Carrot
+              </SelectItem>
+              <SelectItem value="courgette">Courgette</SelectItem>
+              <SelectItem value="leek">Leek</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </main>
     </>
   );
