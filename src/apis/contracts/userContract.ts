@@ -23,9 +23,9 @@ export const userContract = c.router({
   getUserById: {
     method: "GET",
     path: "/users/:id",
-    pathParams: {
+    pathParams: z.object({
       id: z.number(),
-    },
+    }),
     responses: {
       200: UserSchema.nullable(),
     },

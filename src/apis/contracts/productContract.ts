@@ -23,12 +23,17 @@ export const productContract = c.router({
   getAllProducts: {
     method: "GET",
     path: "/products",
-    query: {
+    query: z.object({
       limit: z.number().optional(),
       skip: z.number().optional(),
-    },
+    }),
     responses: {
-      200: z.array(ProductSchema),
+      200: z.object({
+        total: z.number(),
+        skip: z.number(),
+        limit: z.number(),
+        products: z.array(ProductSchema),
+      }),
     },
     summary: "Get all products",
   },
@@ -46,9 +51,9 @@ export const productContract = c.router({
   searchProducts: {
     method: "GET",
     path: "/products/search",
-    query: {
+    query: z.object({
       q: z.string(),
-    },
+    }),
     responses: {
       200: z.array(ProductSchema),
     },
@@ -66,9 +71,9 @@ export const productContract = c.router({
   getProductsByCategory: {
     method: "GET",
     path: "/products/category/:category",
-    pathParams: {
+    pathParams: z.object({
       category: z.string(),
-    },
+    }),
     responses: {
       200: z.array(ProductSchema),
     },

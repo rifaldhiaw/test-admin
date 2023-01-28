@@ -21,12 +21,17 @@ export const cartContract = c.router({
   getAllCarts: {
     method: "GET",
     path: "/carts",
-    query: {
+    query: z.object({
       limit: z.number().optional(),
       skip: z.number().optional(),
-    },
+    }),
     responses: {
-      200: z.array(CartSchema),
+      200: z.object({
+        total: z.number(),
+        skip: z.number(),
+        limit: z.number(),
+        carts: z.array(CartSchema),
+      }),
     },
     summary: "Get all carts",
   },
@@ -34,9 +39,9 @@ export const cartContract = c.router({
   getCartById: {
     method: "GET",
     path: "/carts/:id",
-    pathParams: {
+    pathParams: z.object({
       id: z.number(),
-    },
+    }),
     responses: {
       200: CartSchema.nullable(),
     },
@@ -46,9 +51,9 @@ export const cartContract = c.router({
   getCartsByUserId: {
     method: "GET",
     path: "/carts/user/:id",
-    pathParams: {
+    pathParams: z.object({
       id: z.number(),
-    },
+    }),
     responses: {
       200: z.array(CartSchema),
     },
