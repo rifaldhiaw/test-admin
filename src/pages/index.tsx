@@ -1,7 +1,12 @@
 import { Button } from "@/components/ui/Button";
+import { EventPager } from "@/components/ui/Pagination";
+import { Td, Th, Tr } from "@/components/ui/Table";
 import Head from "next/head";
+import { useState } from "react";
 
 export default function Home() {
+  const [page, setPage] = useState(1);
+
   return (
     <>
       <Head>
@@ -12,7 +17,42 @@ export default function Home() {
       </Head>
       <main className="min-h-screen flex flex-col justify-center items-center">
         <h1 className="text-3xl font-bold underline">Hello world!</h1>
+
+        {/* buttone example */}
         <Button>Submit</Button>
+
+        {/* table example */}
+        <div className="my-6 w-full overflow-y-auto">
+          <table className="w-full">
+            <thead>
+              <Tr>
+                <Th>King Treasury</Th>
+                <Th>People happiness</Th>
+              </Tr>
+            </thead>
+            <tbody>
+              <Tr>
+                <Td>Empty</Td>
+                <Td>Overflowing</Td>
+              </Tr>
+              <Tr>
+                <Td>Modest</Td>
+                <Td>Satisfied</Td>
+              </Tr>
+              <tr className="m-0 border-t border-slate-200 p-0 even:bg-slate-100 dark:border-slate-600 dark:even:bg-slate-800">
+                <Td>Full</Td>
+                <Td>Ecstatic</Td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* pagination example */}
+        <EventPager
+          count={20}
+          page={page}
+          onChange={(_, page) => setPage(page)}
+        />
       </main>
     </>
   );
