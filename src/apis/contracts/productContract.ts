@@ -20,12 +20,17 @@ export const ProductSchema = z.object({
 export type Product = z.infer<typeof ProductSchema>;
 
 export const productContract = c.router({
-  getAllProducts: {
+  getProducts: {
     method: "GET",
     path: "/products",
     query: z.object({
-      limit: z.number().optional(),
-      skip: z.number().optional(),
+      limit: z.string().transform(Number).default("10"),
+      skip: z.string().transform(Number).default("0"),
+      category: z.string().optional(),
+      brand: z.string().optional(),
+      minPrice: z.string().transform(Number).optional(),
+      maxPrice: z.string().transform(Number).optional(),
+      q: z.string().optional(),
     }),
     responses: {
       200: z.object({
@@ -36,47 +41,5 @@ export const productContract = c.router({
       }),
     },
     summary: "Get all products",
-  },
-  getProductById: {
-    method: "GET",
-    path: "/products/:id",
-    pathParams: {
-      id: z.number(),
-    },
-    responses: {
-      200: ProductSchema.nullable(),
-    },
-    summary: "Get a product by id",
-  },
-  searchProducts: {
-    method: "GET",
-    path: "/products/search",
-    query: z.object({
-      q: z.string(),
-    }),
-    responses: {
-      200: z.array(ProductSchema),
-    },
-    summary: "Search products",
-  },
-
-  getAllProductsCategories: {
-    method: "GET",
-    path: "/products/categories",
-    responses: {
-      200: z.array(z.string()),
-    },
-    summary: "Get all products categories",
-  },
-  getProductsByCategory: {
-    method: "GET",
-    path: "/products/category/:category",
-    pathParams: z.object({
-      category: z.string(),
-    }),
-    responses: {
-      200: z.array(ProductSchema),
-    },
-    summary: "Get products of a category",
   },
 });

@@ -10,7 +10,9 @@ specifiers:
   '@radix-ui/react-tooltip': ^1.0.3
   '@tanstack/react-query': ^4.23.0
   '@ts-rest/core': ^3.15.0
+  '@ts-rest/next': ^3.15.0
   '@ts-rest/react-query': ^3.15.0
+  '@types/memory-cache': ^0.2.2
   '@types/node': 18.11.18
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
@@ -20,6 +22,7 @@ specifiers:
   eslint: 8.32.0
   eslint-config-next: 13.1.6
   lucide-react: ^0.107.0
+  memory-cache: ^0.2.0
   next: 13.1.6
   postcss: ^8.4.21
   react: 18.2.0
@@ -40,6 +43,7 @@ dependencies:
   '@radix-ui/react-tooltip': 1.0.3_5ndqzdd6t4rivxsukjv3i3ak2q
   '@tanstack/react-query': 4.23.0_biqbaboplfbrettd7655fr4n2y
   '@ts-rest/core': 3.15.0_zod@3.20.2
+  '@ts-rest/next': 3.15.0_itkm5wpju56z3lb65ircr5wupi
   '@ts-rest/react-query': 3.15.0_lkwanzlrkfttkfsf7omnojyf5a
   '@types/node': 18.11.18
   '@types/react': 18.0.27
@@ -49,6 +53,7 @@ dependencies:
   eslint: 8.32.0
   eslint-config-next: 13.1.6_7uibuqfxkfaozanbtbziikiqje
   lucide-react: 0.107.0_react@18.2.0
+  memory-cache: 0.2.0
   next: 13.1.6_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -58,6 +63,7 @@ dependencies:
   zod: 3.20.2
 
 devDependencies:
+  '@types/memory-cache': 0.2.2
   autoprefixer: 10.4.13_postcss@8.4.21
   postcss: 8.4.21
   tailwindcss: 3.2.4_postcss@8.4.21
@@ -712,6 +718,24 @@ packages:
       zod: 3.20.2
     dev: false
 
+  /@ts-rest/next/3.15.0_itkm5wpju56z3lb65ircr5wupi:
+    resolution: {integrity: sha512-RW9USU0S0llRDnIWmgxQWK67jfw1wxFR6pud2zXOaslwi123ZhASQVvpWJO1zhT4cvAxppS7MOrg/bdpsbKqPg==}
+    peerDependencies:
+      '@swc/helpers': '*'
+      '@ts-rest/core': 3.15.0
+      next: 12.x.x
+      zod: '*'
+    peerDependenciesMeta:
+      '@swc/helpers':
+        optional: true
+      zod:
+        optional: true
+    dependencies:
+      '@ts-rest/core': 3.15.0_zod@3.20.2
+      next: 13.1.6_biqbaboplfbrettd7655fr4n2y
+      zod: 3.20.2
+    dev: false
+
   /@ts-rest/react-query/3.15.0_lkwanzlrkfttkfsf7omnojyf5a:
     resolution: {integrity: sha512-rsce4+KJeyEd5Pw9CNL3gfBiFHtDw43+h2Hpq6aLQuWEhEBXJrIllxmNCgntsKORBofYmnzGcgwU8rMbcwcM4g==}
     peerDependencies:
@@ -735,6 +759,10 @@ packages:
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: false
+
+  /@types/memory-cache/0.2.2:
+    resolution: {integrity: sha512-xNnm6EkmYYhTnLiOHC2bdKgcYY5qjjrq5vl9KXD2nh0em0koZoFS500EL4Q4V/eW+A3P7NC7P7GIYzNOSQp7jQ==}
+    dev: true
 
   /@types/node/18.11.18:
     resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
@@ -2172,6 +2200,10 @@ packages:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /memory-cache/0.2.0:
+    resolution: {integrity: sha512-OcjA+jzjOYzKmKS6IQVALHLVz+rNTMPoJvCztFaZxwG14wtAW7VRZjwTQu06vKCYOxh4jVnik7ya0SXTB0W+xA==}
     dev: false
 
   /merge2/1.4.1:

@@ -2,18 +2,31 @@ import { productApi } from "@/apis/apis";
 import { AdminLayout } from "@/components/layout/AdminLayout";
 import { EventPager } from "@/components/ui/Pagination";
 import { Td, Tr } from "@/components/ui/Table";
-import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function ProductPage() {
-  const [page, setPage] = useState(1);
-  const [count, _setCount] = useState(10);
+  const router = useRouter();
 
-  const productsQuery = productApi.getAllProducts.useQuery(
-    ["products", page, count],
+  const page = Number(router.query.page) || 1;
+  const count = 10;
+
+  const brand = router.query.brand as string;
+  const category = router.query.category as string;
+  const minPrice = Number(router.query.minPrice) || 0;
+  const maxPrice = Number(router.query.maxPrice) || 1000000;
+  const q = router.query.q as string;
+
+  const productsQuery = productApi.getProducts.useQuery(
+    ["products", page, count, brand, category, minPrice, maxPrice, q],
     {
       query: {
-        limit: count,
-        skip: (page - 1) * count,
+        brand,
+        category,
+        minPrice: minPrice.toString(),
+        maxPrice: maxPrice.toString(),
+        q,
+        limit: count.toString(),
+        skip: ((page - 1) * count).toString(),
       },
     }
   );
@@ -60,7 +73,13 @@ export default function ProductPage() {
           count={(productsQuery.data?.body.total ?? 0) / count}
           page={page}
           onChange={(e, page) => {
-            setPage(page);
+            router.push({
+              pathname: "/product",
+              query: {
+                ...router.query,
+                page,
+              },
+            });
           }}
         />
       </div>

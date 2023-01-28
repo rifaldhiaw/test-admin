@@ -5,12 +5,12 @@ import { userContract } from "./contracts/userContract";
 
 const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "https://dummyjson.com";
 
-export const cartApi = initQueryClient(cartContract, {
-  baseUrl: baseUrl,
+export const productApi = initQueryClient(productContract, {
+  baseUrl: "/api",
   baseHeaders: {},
 });
 
-export const productApi = initQueryClient(productContract, {
+export const cartApi = initQueryClient(cartContract, {
   baseUrl: baseUrl,
   baseHeaders: {},
 });
