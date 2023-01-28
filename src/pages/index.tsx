@@ -15,6 +15,11 @@ import {
 } from "@/components/ui/Select";
 import { Separator } from "@/components/ui/Separator";
 import { Td, Th, Tr } from "@/components/ui/Table";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/Tooltip";
 
 import Head from "next/head";
 import { useState } from "react";
@@ -114,6 +119,14 @@ export default function Home() {
           that they couldn&apos;t help but laugh. And once they started
           laughing, they couldn&apos;t stop.
         </ScrollArea>
+
+        {/* tooltip example */}
+        <Tooltip>
+          <TooltipTrigger>Hover</TooltipTrigger>
+          <TooltipContent>
+            <p>Add to library</p>
+          </TooltipContent>
+        </Tooltip>
       </main>
     </>
   );
