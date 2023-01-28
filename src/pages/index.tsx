@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
 import { EventPager } from "@/components/ui/Pagination";
 import { Td, Th, Tr } from "@/components/ui/Table";
+import { Label } from "@radix-ui/react-label";
 import Head from "next/head";
 import { useState } from "react";
 
@@ -53,6 +55,12 @@ export default function Home() {
           page={page}
           onChange={(_, page) => setPage(page)}
         />
+
+        {/* input example */}
+        <div className="grid w-full max-w-sm items-center gap-1.5">
+          <Label htmlFor="email">Email</Label>
+          <Input type="email" id="email" placeholder="Email" />
+        </div>
       </main>
     </>
   );
