@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/Button";
 import Head from "next/head";
 
 export default function Home() {
@@ -9,8 +10,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="min-h-screen flex justify-center items-center">
+      <main className="min-h-screen flex flex-col justify-center items-center">
         <h1 className="text-3xl font-bold underline">Hello world!</h1>
+        <Button>Submit</Button>
       </main>
     </>
   );
