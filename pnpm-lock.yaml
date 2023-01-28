@@ -5,6 +5,7 @@ specifiers:
   '@radix-ui/react-label': ^2.0.0
   '@radix-ui/react-primitive': ^1.0.1
   '@radix-ui/react-select': ^1.2.0
+  '@radix-ui/react-separator': ^1.0.1
   '@types/node': 18.11.18
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
@@ -28,6 +29,7 @@ dependencies:
   '@radix-ui/react-label': 2.0.0_biqbaboplfbrettd7655fr4n2y
   '@radix-ui/react-primitive': 1.0.1_biqbaboplfbrettd7655fr4n2y
   '@radix-ui/react-select': 1.2.0_5ndqzdd6t4rivxsukjv3i3ak2q
+  '@radix-ui/react-separator': 1.0.1_biqbaboplfbrettd7655fr4n2y
   '@types/node': 18.11.18
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
@@ -485,6 +487,18 @@ packages:
       react-remove-scroll: 2.5.5_3stiutgnnbnfnf3uowm5cip22i
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /@radix-ui/react-separator/1.0.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-uc6Izot0D8uVz6T2nSb/HI7OaxkeaD50GgKr3W6HORnbfGVrG7LWuy+g6Fd58n8wHbrRblSYJZEfcjgymMlJjw==}
+    peerDependencies:
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    dependencies:
+      '@babel/runtime': 7.20.13
+      '@radix-ui/react-primitive': 1.0.1_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /@radix-ui/react-slot/1.0.1_react@18.2.0:

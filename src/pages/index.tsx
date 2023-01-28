@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/Select";
+import { Separator } from "@/components/ui/Separator";
 import { Td, Th, Tr } from "@/components/ui/Table";
 
 import Head from "next/head";
@@ -29,8 +30,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="min-h-screen p-10 flex flex-col gap-5 justify-center items-center">
-        <h1 className="text-3xl font-bold underline">Hello world!</h1>
-
         {/* buttone example */}
         <Button>Submit</Button>
 
@@ -72,6 +71,9 @@ export default function Home() {
           <Label htmlFor="email">Email</Label>
           <Input type="email" id="email" placeholder="Email" />
         </div>
+
+        {/* separator example */}
+        <Separator />
 
         {/* select example */}
         <Select>
