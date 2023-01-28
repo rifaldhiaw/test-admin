@@ -1,6 +1,6 @@
-import { ProductSchema } from "@/api/productApi";
 import { initContract } from "@ts-rest/core";
 import { z } from "zod";
+import { ProductSchema } from "./productContract";
 
 const c = initContract();
 
