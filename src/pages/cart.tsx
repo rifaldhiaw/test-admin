@@ -1,7 +1,7 @@
 import { cartApi } from "@/apis/apis";
 import { AdminLayout } from "@/components/layout/AdminLayout";
 import { EventPager } from "@/components/ui/Pagination";
-import { Td, Tr } from "@/components/ui/Table";
+import { Td, Th, Tr } from "@/components/ui/Table";
 import { useState } from "react";
 
 export default function CartPage() {
@@ -27,23 +27,25 @@ export default function CartPage() {
         )}
 
         {cartsQuery.isSuccess && (
-          <div>
-            <table>
+          <div className="w-full">
+            <table className="w-full">
               <thead>
-                <Tr>
-                  <th>User Id</th>
-                  <th>Discounted Total</th>
-                  <th>Total Products</th>
-                  <th>Total Quantity</th>
+                <Tr className="flex flex-row">
+                  <Th className="flex-1 text-center">User Id</Th>
+                  <Th className="flex-1 text-center">Discounted Total</Th>
+                  <Th className="flex-1 text-center">Total Products</Th>
+                  <Th className="flex-1 text-center">Total Quantity</Th>
                 </Tr>
               </thead>
               <tbody>
                 {cartsQuery.data.body.carts.map((cart) => (
-                  <Tr key={cart.id}>
-                    <Td>{cart.userId}</Td>
-                    <Td>{cart.discountedTotal}</Td>
-                    <Td>{cart.totalProducts}</Td>
-                    <Td>{cart.totalQuantity}</Td>
+                  <Tr key={cart.id} className="flex flex-row">
+                    <Td className="flex-1 text-center">{cart.userId}</Td>
+                    <Td className="flex-1 text-center">
+                      {cart.discountedTotal}
+                    </Td>
+                    <Td className="flex-1 text-center">{cart.totalProducts}</Td>
+                    <Td className="flex-1 text-center">{cart.totalQuantity}</Td>
                   </Tr>
                 ))}
               </tbody>

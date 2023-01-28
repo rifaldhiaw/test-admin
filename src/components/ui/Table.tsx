@@ -1,12 +1,18 @@
+import { cn } from "@/lib/utils";
+
 type TrProps = {
   children: React.ReactNode;
 } & React.HTMLAttributes<HTMLTableRowElement>;
 
 const Tr = ({ children, ...props }: TrProps) => {
+  const { className, ...rest } = props;
   return (
     <tr
-      className="m-0 border-t border-slate-200 p-0 even:bg-slate-100 dark:border-slate-700 dark:even:bg-slate-800"
-      {...props}
+      className={cn(
+        "m-0 border-t border-slate-200 p-0 even:bg-slate-100 dark:border-slate-700 dark:even:bg-slate-800",
+        className
+      )}
+      {...rest}
     >
       {children}
     </tr>
@@ -18,10 +24,14 @@ type ThProps = {
 } & React.HTMLAttributes<HTMLTableHeaderCellElement>;
 
 const Th = ({ children, ...props }: ThProps) => {
+  const { className, ...rest } = props;
   return (
     <th
-      className="border border-slate-200 px-4 py-2 text-left font-bold dark:border-slate-700 [&[align=center]]:text-center [&[align=right]]:text-right"
-      {...props}
+      className={cn(
+        "border border-slate-200 px-4 py-2 text-left font-bold dark:border-slate-700 [&[align=center]]:text-center [&[align=right]]:text-right",
+        className
+      )}
+      {...rest}
     >
       {children}
     </th>
@@ -33,10 +43,14 @@ type TdProps = {
 } & React.HTMLAttributes<HTMLTableDataCellElement>;
 
 const Td = ({ children, ...props }: TdProps) => {
+  const { className, ...rest } = props;
   return (
     <td
-      className="border border-slate-200 px-4 py-2 text-left dark:border-slate-700 [&[align=center]]:text-center [&[align=right]]:text-right"
-      {...props}
+      className={cn(
+        "border border-slate-200 px-4 py-2 text-left dark:border-slate-700 [&[align=center]]:text-center [&[align=right]]:text-right",
+        className
+      )}
+      {...rest}
     >
       {children}
     </td>

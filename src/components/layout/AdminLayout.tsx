@@ -22,8 +22,8 @@ const AdminLayout = (props: AdminLayoutProps) => {
   const activeMenu = menus.find((menu) => menu.path === router.pathname);
 
   return (
-    <div>
-      <div className="fixed top-0 left-0 w-56 bg-slate-100 h-full">
+    <div className="flex flex-row">
+      <div className="w-56 bg-slate-100 h-screen">
         <ul>
           {menus.map((menu) => (
             <Link key={menu.name} href={menu.path}>
@@ -40,7 +40,7 @@ const AdminLayout = (props: AdminLayoutProps) => {
         </ul>
       </div>
 
-      {props.children}
+      <div className="flex-1 p-4">{props.children}</div>
     </div>
   );
 };

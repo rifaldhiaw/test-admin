@@ -1,7 +1,7 @@
 import { productApi } from "@/apis/apis";
 import { AdminLayout } from "@/components/layout/AdminLayout";
 import { EventPager } from "@/components/ui/Pagination";
-import { Td, Tr } from "@/components/ui/Table";
+import { Td, Th, Tr } from "@/components/ui/Table";
 import { useRouter } from "next/router";
 
 export default function ProductPage() {
@@ -43,25 +43,25 @@ export default function ProductPage() {
         )}
 
         {productsQuery.isSuccess && (
-          <div>
-            <table>
+          <div className="w-full">
+            <table className="w-full">
               <thead>
-                <Tr>
-                  <th>Product Name</th>
-                  <th>Brand</th>
-                  <th>Price</th>
-                  <th>Stock</th>
-                  <th>Category</th>
+                <Tr className="flex flex-row">
+                  <Th className="flex-1">Product Name</Th>
+                  <Th className="flex-1">Brand</Th>
+                  <Th className="w-24">Price</Th>
+                  <Th className="w-24">Stock</Th>
+                  <Th className="w-48">Category</Th>
                 </Tr>
               </thead>
               <tbody>
                 {productsQuery.data.body.products.map((product) => (
-                  <Tr key={product.id}>
-                    <Td>{product.title}</Td>
-                    <Td>{product.brand}</Td>
-                    <Td>{product.price}</Td>
-                    <Td>{product.stock}</Td>
-                    <Td>{product.category}</Td>
+                  <Tr key={product.id} className="flex flex-row">
+                    <Td className="flex-1">{product.title}</Td>
+                    <Td className="flex-1">{product.brand}</Td>
+                    <Td className="w-24">{product.price}</Td>
+                    <Td className="w-24">{product.stock}</Td>
+                    <Td className="w-48">{product.category}</Td>
                   </Tr>
                 ))}
               </tbody>
