@@ -8,6 +8,7 @@ specifiers:
   '@radix-ui/react-select': ^1.2.0
   '@radix-ui/react-separator': ^1.0.1
   '@radix-ui/react-tooltip': ^1.0.3
+  '@ts-rest/core': ^3.15.0
   '@types/node': 18.11.18
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
@@ -25,6 +26,7 @@ specifiers:
   tailwindcss: ^3.2.4
   tailwindcss-animate: ^1.0.5
   typescript: 4.9.4
+  zod: ^3.20.2
 
 dependencies:
   '@next/font': 13.1.6
@@ -34,6 +36,7 @@ dependencies:
   '@radix-ui/react-select': 1.2.0_5ndqzdd6t4rivxsukjv3i3ak2q
   '@radix-ui/react-separator': 1.0.1_biqbaboplfbrettd7655fr4n2y
   '@radix-ui/react-tooltip': 1.0.3_5ndqzdd6t4rivxsukjv3i3ak2q
+  '@ts-rest/core': 3.15.0_zod@3.20.2
   '@types/node': 18.11.18
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
@@ -48,6 +51,7 @@ dependencies:
   tailwind-merge: 1.8.1
   tailwindcss-animate: 1.0.5_tailwindcss@3.2.4
   typescript: 4.9.4
+  zod: 3.20.2
 
 devDependencies:
   autoprefixer: 10.4.13_postcss@8.4.21
@@ -666,6 +670,20 @@ packages:
     resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
     dependencies:
       tslib: 2.5.0
+    dev: false
+
+  /@ts-rest/core/3.15.0_zod@3.20.2:
+    resolution: {integrity: sha512-uReVbBDnn5d8H+qrJvatzR8UgjHzO6fosg3V6QYfF31U5ykP8IOFNE9o6N1DguJlxhyco4ndrQQ9JVgctEI0DA==}
+    peerDependencies:
+      tslib: '*'
+      zod: 3.x.x
+    peerDependenciesMeta:
+      tslib:
+        optional: true
+      zod:
+        optional: true
+    dependencies:
+      zod: 3.20.2
     dev: false
 
   /@types/json5/0.0.29:
@@ -2999,4 +3017,8 @@ packages:
   /yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    dev: false
+
+  /zod/3.20.2:
+    resolution: {integrity: sha512-1MzNQdAvO+54H+EaK5YpyEy0T+Ejo/7YLHS93G3RnYWh5gaotGHwGeN/ZO687qEDU2y4CdStQYXVHIgrUl5UVQ==}
     dev: false
