@@ -12,6 +12,7 @@ export const MinPriceInput = () => {
       query: {
         ...router.query,
         minPrice: minPrice,
+        page: 1,
       },
     });
   };

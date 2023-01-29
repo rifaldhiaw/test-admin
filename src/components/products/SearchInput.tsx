@@ -13,6 +13,7 @@ export const SearchInput = () => {
       query: {
         ...router.query,
         search: search,
+        page: 1,
       },
     });
   };

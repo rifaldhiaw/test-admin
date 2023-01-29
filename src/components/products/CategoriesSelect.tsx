@@ -23,6 +23,7 @@ export const CategoriesSelect = () => {
           query: {
             ...router.query,
             category: value,
+            page: 1,
           },
         });
       }}

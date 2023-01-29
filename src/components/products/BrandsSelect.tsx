@@ -23,6 +23,7 @@ export const BrandsSelect = () => {
           query: {
             ...router.query,
             brand: value,
+            page: 1,
           },
         });
       }}

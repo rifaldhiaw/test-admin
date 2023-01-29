@@ -12,6 +12,7 @@ export const MaxPriceInput = () => {
       query: {
         ...router.query,
         maxPrice: maxPrice,
+        page: 1,
       },
     });
   };
