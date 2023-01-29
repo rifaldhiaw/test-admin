@@ -36,16 +36,16 @@ export default function CartPage() {
 
   return (
     <AdminLayout>
-      <div className="flex flex-col gap-5 justify-center items-center mt-16">
+      <div className="flex flex-col gap-5 items-center mt-16">
         <div className="w-full">
           <table className="w-full">
             <thead>
               <Tr className="flex flex-row">
-                <Th className="w-24 text-center">Id</Th>
-                <Th className="flex-1 text-center">User Id</Th>
-                <Th className="flex-1 text-center">Discounted Total</Th>
-                <Th className="flex-1 text-center">Total Products</Th>
-                <Th className="flex-1 text-center">Total Quantity</Th>
+                <Th className="w-24">Id</Th>
+                <Th className="flex-1">User Id</Th>
+                <Th className="flex-1">Discounted Total</Th>
+                <Th className="flex-1">Total Products</Th>
+                <Th className="flex-1">Total Quantity</Th>
               </Tr>
             </thead>
             <tbody>
@@ -57,11 +57,11 @@ export default function CartPage() {
                     router.push(`/cart/${cart.id}`);
                   }}
                 >
-                  <Td className="w-24 text-center">{cart.id}</Td>
-                  <Td className="flex-1 text-center">{cart.userId}</Td>
-                  <Td className="flex-1 text-center">{cart.discountedTotal}</Td>
-                  <Td className="flex-1 text-center">{cart.totalProducts}</Td>
-                  <Td className="flex-1 text-center">{cart.totalQuantity}</Td>
+                  <Td className="w-24">{cart.id}</Td>
+                  <Td className="flex-1">{cart.userId}</Td>
+                  <Td className="flex-1">{cart.discountedTotal}</Td>
+                  <Td className="flex-1">{cart.totalProducts}</Td>
+                  <Td className="flex-1">{cart.totalQuantity}</Td>
                 </Tr>
               ))}
             </tbody>
