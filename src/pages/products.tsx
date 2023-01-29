@@ -117,7 +117,7 @@ export default function ProductPage() {
           page={page}
           onChange={(e, page) => {
             router.push({
-              pathname: "/product",
+              pathname: "/products",
               query: {
                 ...router.query,
                 page,

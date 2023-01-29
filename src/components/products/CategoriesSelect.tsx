@@ -19,7 +19,7 @@ export const CategoriesSelect = () => {
       value={router.query.category as string}
       onValueChange={(value) => {
         router.push({
-          pathname: "/product",
+          pathname: "/products",
           query: {
             ...router.query,
             category: value,

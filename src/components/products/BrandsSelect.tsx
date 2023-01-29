@@ -19,7 +19,7 @@ export const BrandsSelect = () => {
       value={router.query.brand as string}
       onValueChange={(value) => {
         router.push({
-          pathname: "/product",
+          pathname: "/products",
           query: {
             ...router.query,
             brand: value,

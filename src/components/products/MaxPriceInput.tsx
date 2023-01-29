@@ -8,7 +8,7 @@ export const MaxPriceInput = () => {
 
   const submit = () => {
     router.push({
-      pathname: "/product",
+      pathname: "/products",
       query: {
         ...router.query,
         maxPrice: maxPrice,

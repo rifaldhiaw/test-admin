@@ -9,7 +9,7 @@ export const SearchInput = () => {
 
   const submit = () => {
     router.push({
-      pathname: "/product",
+      pathname: "/products",
       query: {
         ...router.query,
         search: search,

@@ -54,7 +54,7 @@ export default function CartPage() {
                   key={cart.id}
                   className="flex flex-row cursor-pointer"
                   onClick={() => {
-                    router.push(`/cart/${cart.id}`);
+                    router.push(`/carts/${cart.id}`);
                   }}
                 >
                   <Td className="w-24">{cart.id}</Td>
@@ -72,7 +72,7 @@ export default function CartPage() {
           count={totalItems}
           page={page}
           onChange={(e, page) => {
-            router.push(`/cart?page=${page}`);
+            router.push(`/carts?page=${page}`);
           }}
         />
       </div>

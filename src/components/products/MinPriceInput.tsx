@@ -8,7 +8,7 @@ export const MinPriceInput = () => {
 
   const submit = () => {
     router.push({
-      pathname: "/product",
+      pathname: "/products",
       query: {
         ...router.query,
         minPrice: minPrice,

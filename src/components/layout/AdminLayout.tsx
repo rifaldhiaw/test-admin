@@ -11,12 +11,12 @@ type AdminLayoutProps = {
 const menus = [
   {
     name: "Products",
-    path: "/product",
+    path: "/products",
     icon: Box,
   },
   {
     name: "Carts",
-    path: "/cart",
+    path: "/carts",
     icon: ShoppingCart,
   },
 ];
