@@ -20,6 +20,7 @@ export const SearchInput = () => {
 
   return (
     <Input
+      data-testid="search-input"
       className="w-48"
       value={search}
       onChange={(e) => setSearch(e.target.value)}

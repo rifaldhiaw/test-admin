@@ -19,6 +19,7 @@ export const MaxPriceInput = () => {
 
   return (
     <Input
+      data-testid="max-price-input"
       className="w-24"
       type="number"
       value={maxPrice}

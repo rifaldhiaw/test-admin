@@ -28,10 +28,18 @@ export const CategoriesSelect = () => {
         });
       }}
     >
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select a category" />
+      <SelectTrigger
+        data-testid="categories-select"
+        disabled={categoriesQuery.isLoading}
+        className="w-[180px]"
+      >
+        <SelectValue
+          placeholder={
+            categoriesQuery.isLoading ? "Loading..." : "Select a category"
+          }
+        />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent data-testid="categories-select-content">
         <SelectGroup>
           <SelectLabel>Categories</SelectLabel>
           <SelectItem value="">All</SelectItem>
