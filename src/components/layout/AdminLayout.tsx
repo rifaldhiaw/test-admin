@@ -27,9 +27,14 @@ const AdminLayout = (props: AdminLayoutProps) => {
 
   return (
     <div className="flex flex-row">
-      <div className="w-56 h-screen border-r border-slate-200 px-4">
+      <div className="w-56 min-h-screen border-r border-slate-200 px-4">
         <div className="flex items-center justify-center h-16 my-14">
-          <h1 className="text-xl font-bold">Admin</h1>
+          <h1
+            className="text-xl font-bold cursor-pointer"
+            onClick={() => router.push("/")}
+          >
+            Admin
+          </h1>
         </div>
         <div className="grid gap-4">
           {menus.map((menu) => (
