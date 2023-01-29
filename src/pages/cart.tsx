@@ -42,7 +42,7 @@ export default function CartPage() {
               {(cartsQuery.data?.body.carts ?? cartsLoading).map((cart) => (
                 <Tr
                   key={cart.id}
-                  className="flex flex-row cursor-pointer hover:bg-slate-200"
+                  className="flex flex-row cursor-pointer"
                   onClick={() => {
                     router.push(`/cart/${cart.id}`);
                   }}
