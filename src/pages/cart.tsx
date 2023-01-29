@@ -3,6 +3,7 @@ import { AdminLayout } from "@/components/layout/AdminLayout";
 import { EventPager } from "@/components/ui/Pagination";
 import { Td, Th, Tr } from "@/components/ui/Table";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 const count = 10;
 const cartsLoading = Array.from({ length: 10 }, (_, i) => ({
@@ -16,13 +17,22 @@ const cartsLoading = Array.from({ length: 10 }, (_, i) => ({
 export default function CartPage() {
   const router = useRouter();
   const page = Number(router.query.page) || 1;
+  const [totalItems, setTotalItems] = useState(0);
 
-  const cartsQuery = cartApi.getAllCarts.useQuery(["carts", page, count], {
-    query: {
-      limit: count,
-      skip: (page - 1) * count,
+  const cartsQuery = cartApi.getAllCarts.useQuery(
+    ["carts", page, count],
+    {
+      query: {
+        limit: count,
+        skip: (page - 1) * count,
+      },
     },
-  });
+    {
+      onSuccess: (data) => {
+        setTotalItems(Math.ceil((data?.body.total ?? 0) / count));
+      },
+    }
+  );
 
   return (
     <AdminLayout>
@@ -59,7 +69,7 @@ export default function CartPage() {
         </div>
 
         <EventPager
-          count={Math.ceil((cartsQuery.data?.body.total ?? 0) / count)}
+          count={totalItems}
           page={page}
           onChange={(e, page) => {
             router.push(`/cart?page=${page}`);

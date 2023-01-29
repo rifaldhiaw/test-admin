@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/Label";
 import { EventPager } from "@/components/ui/Pagination";
 import { Td, Th, Tr } from "@/components/ui/Table";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 const count = 10;
 
@@ -32,6 +33,8 @@ export default function ProductPage() {
   const maxPrice = Number(router.query.maxPrice) || 1000000;
   const search = router.query.search as string;
 
+  const [totalItems, setTotalItems] = useState(0);
+
   const productsQuery = productApi.getProducts.useQuery(
     ["products", page, count, brand, category, minPrice, maxPrice, search],
     {
@@ -43,6 +46,11 @@ export default function ProductPage() {
         search: search,
         limit: count.toString(),
         skip: ((page - 1) * count).toString(),
+      },
+    },
+    {
+      onSuccess: (data) => {
+        setTotalItems(Math.ceil((data?.body.total ?? 0) / count));
       },
     }
   );
@@ -105,7 +113,7 @@ export default function ProductPage() {
         </div>
 
         <EventPager
-          count={Math.ceil((productsQuery.data?.body.total ?? 0) / count)}
+          count={totalItems}
           page={page}
           onChange={(e, page) => {
             router.push({
