@@ -1,7 +1,18 @@
 import { productApi } from "@/apis/apis";
 import { AdminLayout } from "@/components/layout/AdminLayout";
+import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { Label } from "@/components/ui/Label";
 import { EventPager } from "@/components/ui/Pagination";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/Select";
 import { Td, Th, Tr } from "@/components/ui/Table";
 import { useRouter } from "next/router";
 
@@ -55,11 +66,56 @@ export default function ProductPage() {
 
   return (
     <AdminLayout>
-      <div className="flex flex-col gap-5 items-center">
-        <h1 className="text-4xl">Product Page</h1>
+      <div className="flex flex-col gap-5 items-center mt-12">
+        <div className="self-stretch flex flex-row justify-between">
+          <div className="grid gap-1.5">
+            <Label>Search</Label>
+            <Input className="w-48" onKeyDown={onSearch} />
+          </div>
 
-        <div className="self-end">
-          <Input onKeyDown={onSearch} />
+          {/* right content */}
+          <div className="flex flex-row gap-3">
+            <div className="grid gap-1.5">
+              <Label>Price Range</Label>
+              <Button variant="outline">100-10000</Button>
+            </div>
+            <div className="grid gap-1.5">
+              <Label>Brand</Label>
+              <Select>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Select a fruit" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Fruits</SelectLabel>
+                    <SelectItem value="apple">Apple</SelectItem>
+                    <SelectItem value="banana">Banana</SelectItem>
+                    <SelectItem value="blueberry">Blueberry</SelectItem>
+                    <SelectItem value="grapes">Grapes</SelectItem>
+                    <SelectItem value="pineapple">Pineapple</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid gap-1.5">
+              <Label>Category</Label>
+              <Select>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Select a fruit" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Fruits</SelectLabel>
+                    <SelectItem value="apple">Apple</SelectItem>
+                    <SelectItem value="banana">Banana</SelectItem>
+                    <SelectItem value="blueberry">Blueberry</SelectItem>
+                    <SelectItem value="grapes">Grapes</SelectItem>
+                    <SelectItem value="pineapple">Pineapple</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
         </div>
 
         <div className="self-stretch">
