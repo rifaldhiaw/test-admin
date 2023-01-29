@@ -1,18 +1,12 @@
 import { productApi } from "@/apis/apis";
 import { AdminLayout } from "@/components/layout/AdminLayout";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
+import { BrandsSelect } from "@/components/products/BrandsSelect";
+import { CategoriesSelect } from "@/components/products/CategoriesSelect";
+import { MaxPriceInput } from "@/components/products/MaxPriceInput";
+import { MinPriceInput } from "@/components/products/MinPriceInput";
+import { SearchInput } from "@/components/products/SearchInput";
 import { Label } from "@/components/ui/Label";
 import { EventPager } from "@/components/ui/Pagination";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/Select";
 import { Td, Th, Tr } from "@/components/ui/Table";
 import { useRouter } from "next/router";
 
@@ -36,33 +30,22 @@ export default function ProductPage() {
   const category = router.query.category as string;
   const minPrice = Number(router.query.minPrice) || 0;
   const maxPrice = Number(router.query.maxPrice) || 1000000;
-  const q = router.query.q as string;
+  const search = router.query.search as string;
 
   const productsQuery = productApi.getProducts.useQuery(
-    ["products", page, count, brand, category, minPrice, maxPrice, q],
+    ["products", page, count, brand, category, minPrice, maxPrice, search],
     {
       query: {
         brand,
         category,
         minPrice: minPrice.toString(),
         maxPrice: maxPrice.toString(),
-        q,
+        search: search,
         limit: count.toString(),
         skip: ((page - 1) * count).toString(),
       },
     }
   );
-
-  const onSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      router.push({
-        pathname: "/product",
-        query: {
-          q: e.currentTarget.value,
-        },
-      });
-    }
-  };
 
   return (
     <AdminLayout>
@@ -70,50 +53,26 @@ export default function ProductPage() {
         <div className="self-stretch flex flex-row justify-between">
           <div className="grid gap-1.5">
             <Label>Search</Label>
-            <Input className="w-48" onKeyDown={onSearch} />
+            <SearchInput />
           </div>
 
           {/* right content */}
           <div className="flex flex-row gap-3">
             <div className="grid gap-1.5">
-              <Label>Price Range</Label>
-              <Button variant="outline">100-10000</Button>
+              <Label>Min Price</Label>
+              <MinPriceInput />
+            </div>
+            <div className="grid gap-1.5">
+              <Label>Max Price</Label>
+              <MaxPriceInput />
             </div>
             <div className="grid gap-1.5">
               <Label>Brand</Label>
-              <Select>
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Select a fruit" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Fruits</SelectLabel>
-                    <SelectItem value="apple">Apple</SelectItem>
-                    <SelectItem value="banana">Banana</SelectItem>
-                    <SelectItem value="blueberry">Blueberry</SelectItem>
-                    <SelectItem value="grapes">Grapes</SelectItem>
-                    <SelectItem value="pineapple">Pineapple</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <BrandsSelect />
             </div>
             <div className="grid gap-1.5">
               <Label>Category</Label>
-              <Select>
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Select a fruit" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Fruits</SelectLabel>
-                    <SelectItem value="apple">Apple</SelectItem>
-                    <SelectItem value="banana">Banana</SelectItem>
-                    <SelectItem value="blueberry">Blueberry</SelectItem>
-                    <SelectItem value="grapes">Grapes</SelectItem>
-                    <SelectItem value="pineapple">Pineapple</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <CategoriesSelect />
             </div>
           </div>
         </div>

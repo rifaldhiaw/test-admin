@@ -24,7 +24,7 @@ const productsRouter = createNextRoute(productContract, {
     }
 
     let products = dataInMemory;
-    const { skip, limit, minPrice, maxPrice, q } = args.query;
+    const { skip, limit, minPrice, maxPrice, search } = args.query;
 
     if (args.query.category) {
       products = products.filter(
@@ -46,9 +46,9 @@ const productsRouter = createNextRoute(productContract, {
       products = products.filter((product) => product.price <= maxPrice);
     }
 
-    if (q) {
+    if (search) {
       products = products.filter((product) =>
-        product.title.toLowerCase().includes(q.toLowerCase())
+        product.title.toLowerCase().includes(search.toLowerCase())
       );
     }
 

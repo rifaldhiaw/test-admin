@@ -30,7 +30,7 @@ export const productContract = c.router({
       brand: z.string().optional(),
       minPrice: z.string().transform(Number).optional(),
       maxPrice: z.string().transform(Number).optional(),
-      q: z.string().optional(),
+      search: z.string().optional(),
     }),
     responses: {
       200: z.object({
