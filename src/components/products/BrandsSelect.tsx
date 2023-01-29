@@ -31,7 +31,6 @@ export const BrandsSelect = () => {
       <SelectTrigger
         data-testid="brands-select"
         disabled={brandsQuery.isLoading}
-        className="w-[180px]"
       >
         <SelectValue
           placeholder={brandsQuery.isLoading ? "Loading..." : "Select a brand"}

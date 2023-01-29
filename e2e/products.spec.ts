@@ -45,7 +45,6 @@ test("should be able to search for products", async ({ page }) => {
   const hasIphone = await Promise.all(
     rows.map(async (row) => {
       const text = await row.innerText();
-      console.log(text);
       return text.includes("iPhone");
     })
   );

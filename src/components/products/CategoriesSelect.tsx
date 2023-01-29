@@ -31,9 +31,9 @@ export const CategoriesSelect = () => {
       <SelectTrigger
         data-testid="categories-select"
         disabled={categoriesQuery.isLoading}
-        className="w-[180px]"
       >
         <SelectValue
+          className="text-ellipsis whitespace-nowrap"
           placeholder={
             categoriesQuery.isLoading ? "Loading..." : "Select a category"
           }
