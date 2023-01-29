@@ -5,19 +5,22 @@ import cacheData from "memory-cache";
 const PRODUCT_CACHE_KEY = "products";
 const PRODUCT_CACHE_HOUR = 24;
 
+const getAndCacheExternalProducts = async () => {
+  const response = await fetch("https://dummyjson.com/products?limit=100");
+  const data = await response.json();
+
+  cacheData.put(
+    PRODUCT_CACHE_KEY,
+    data.products,
+    PRODUCT_CACHE_HOUR * 1000 * 60 * 60
+  );
+};
+
 const productsRouter = createNextRoute(productContract, {
   getProducts: async (args) => {
     const dataInMemory: Product[] = cacheData.get(PRODUCT_CACHE_KEY) || [];
-
     if (dataInMemory.length === 0) {
-      const response = await fetch("https://dummyjson.com/products?limit=100");
-      const data = await response.json();
-
-      cacheData.put(
-        PRODUCT_CACHE_KEY,
-        data.products,
-        PRODUCT_CACHE_HOUR * 1000 * 60 * 60
-      );
+      await getAndCacheExternalProducts();
     }
 
     let products = dataInMemory;
@@ -59,6 +62,34 @@ const productsRouter = createNextRoute(productContract, {
         skip: args.query.skip,
         limit: args.query.limit,
       },
+    };
+  },
+  getBrands: async () => {
+    const dataInMemory: Product[] = cacheData.get(PRODUCT_CACHE_KEY) || [];
+    if (dataInMemory.length === 0) {
+      await getAndCacheExternalProducts();
+    }
+
+    const brands = dataInMemory.map((product) => product.brand);
+    const uniqueBrands = [...new Set(brands)];
+
+    return {
+      status: 200,
+      body: uniqueBrands,
+    };
+  },
+  getCategories: async () => {
+    const dataInMemory: Product[] = cacheData.get(PRODUCT_CACHE_KEY) || [];
+    if (dataInMemory.length === 0) {
+      await getAndCacheExternalProducts();
+    }
+
+    const categories = dataInMemory.map((product) => product.category);
+    const uniqueCategories = [...new Set(categories)];
+
+    return {
+      status: 200,
+      body: uniqueCategories,
     };
   },
 });

@@ -42,4 +42,20 @@ export const productContract = c.router({
     },
     summary: "Get all products",
   },
+  getBrands: {
+    method: "GET",
+    path: "/products/brands",
+    responses: {
+      200: z.array(z.string()),
+    },
+    summary: "Get all brands",
+  },
+  getCategories: {
+    method: "GET",
+    path: "/products/categories",
+    responses: {
+      200: z.array(z.string()),
+    },
+    summary: "Get all categories",
+  },
 });
