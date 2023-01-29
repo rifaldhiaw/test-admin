@@ -1,4 +1,4 @@
-import { cartApi } from "@/apis/apis";
+import { cartApi, userApi } from "@/apis/apis";
 import { ProductInCart } from "@/apis/contracts/cartContract";
 import { AdminLayout } from "@/components/layout/AdminLayout";
 import { Td, Th, Tr } from "@/components/ui/Table";
@@ -29,6 +29,22 @@ export default function CartDetailPage() {
     },
   });
 
+  const userQuery = userApi.getUserById.useQuery(
+    ["users", cartsQuery.data?.body?.userId],
+    {
+      params: {
+        id: cartsQuery.data?.body?.userId.toString() ?? "",
+      },
+    },
+    {
+      enabled: !!cartsQuery.data?.body?.userId,
+    }
+  );
+
+  const userFullName = `${userQuery.data?.body?.firstName ?? ""} ${
+    userQuery.data?.body?.lastName ?? ""
+  }`;
+
   return (
     <AdminLayout>
       <div className="flex flex-col gap-5 justify-center mt-12">
@@ -48,7 +64,7 @@ export default function CartDetailPage() {
             <div className="flex">
               <div className="w-1/3">User</div>
               <div className="w-2/3">
-                {cartsQuery.data?.body?.userId ?? "..."}
+                {userQuery.isSuccess ? userFullName : "..."}
               </div>
             </div>
             <div className="flex">
