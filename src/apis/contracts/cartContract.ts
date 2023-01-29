@@ -1,12 +1,21 @@
 import { initContract } from "@ts-rest/core";
 import { z } from "zod";
-import { ProductSchema } from "./productContract";
 
 const c = initContract();
 
+const ProductInCartSchema = z.object({
+  id: z.number(),
+  title: z.string(),
+  price: z.number(),
+  discountPercentage: z.number(),
+  discountedPrice: z.number(),
+  quantity: z.number(),
+  total: z.number(),
+});
+
 export const CartSchema = z.object({
   id: z.number(),
-  products: z.array(ProductSchema),
+  products: z.array(ProductInCartSchema),
   total: z.number(),
   discountedTotal: z.number(),
   userId: z.number(),
@@ -15,6 +24,7 @@ export const CartSchema = z.object({
 });
 
 export type Cart = z.infer<typeof CartSchema>;
+export type ProductInCart = z.infer<typeof ProductInCartSchema>;
 
 export const cartContract = c.router({
   // Get all carts https://dummyjson.com/carts
