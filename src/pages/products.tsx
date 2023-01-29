@@ -57,74 +57,82 @@ export default function ProductPage() {
 
   return (
     <AdminLayout>
-      <div className="flex flex-col gap-5 items-center mt-12">
-        <div className="self-stretch flex flex-row justify-between">
+      <div className="gap-5 items-center md:mt-6 lg:mt-12">
+        {/* filter section */}
+        <section className="w-full flex flex-col lg:flex-row gap-3 justify-between">
           <div className="grid gap-1.5">
             <Label>Search</Label>
             <SearchInput />
           </div>
 
-          {/* right content */}
-          <div className="flex flex-row gap-3">
-            <div className="grid gap-1.5">
-              <Label>Min Price</Label>
-              <MinPriceInput />
+          <div className="flex items-stretch flex-col md:flex-row gap-3">
+            <div className="flex gap-3 md:w-32 lg:w-64 md:flex-auto">
+              <div className="flex-1 grid gap-1.5">
+                <Label>Min Price</Label>
+                <MinPriceInput />
+              </div>
+              <div className="flex-1 grid gap-1.5">
+                <Label>Max Price</Label>
+                <MaxPriceInput />
+              </div>
             </div>
-            <div className="grid gap-1.5">
-              <Label>Max Price</Label>
-              <MaxPriceInput />
-            </div>
-            <div className="grid gap-1.5">
-              <Label>Brand</Label>
-              <BrandsSelect />
-            </div>
-            <div className="grid gap-1.5">
-              <Label>Category</Label>
-              <CategoriesSelect />
+
+            <div className="flex gap-3 md:w-64 lg:w-96 flex-auto">
+              <div className="flex-1 grid gap-1.5">
+                <Label>Brand</Label>
+                <BrandsSelect />
+              </div>
+              <div className="flex-1 grid gap-1.5">
+                <Label>Category</Label>
+                <CategoriesSelect />
+              </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className="self-stretch">
+        {/* table section */}
+        <section className="block mt-8 overflow-x-auto">
           <table className="w-full">
             <thead>
               <Tr className="flex flex-row">
-                <Th className="flex-1">Product Name</Th>
-                <Th className="flex-1">Brand</Th>
-                <Th className="w-24">Price</Th>
-                <Th className="w-24">Stock</Th>
-                <Th className="w-48">Category</Th>
+                <Th className="w-64 flex-auto">Product Name</Th>
+                <Th className="w-64 flex-auto">Brand</Th>
+                <Th className="w-20">Price</Th>
+                <Th className="w-20">Stock</Th>
+                <Th className="w-32">Category</Th>
               </Tr>
             </thead>
             <tbody>
               {(productsQuery.data?.body.products ?? productsLoading).map(
                 (product) => (
                   <Tr key={product.id} className="flex flex-row">
-                    <Td className="flex-1">{product.title}</Td>
-                    <Td className="flex-1">{product.brand}</Td>
-                    <Td className="w-24">{product.price}</Td>
-                    <Td className="w-24">{product.stock}</Td>
-                    <Td className="w-48">{product.category}</Td>
+                    <Td className="w-64 flex-auto">{product.title}</Td>
+                    <Td className="w-64 flex-auto">{product.brand}</Td>
+                    <Td className="w-20">{product.price}</Td>
+                    <Td className="w-20">{product.stock}</Td>
+                    <Td className="w-32">{product.category}</Td>
                   </Tr>
                 )
               )}
             </tbody>
           </table>
-        </div>
+        </section>
 
-        <EventPager
-          count={totalItems}
-          page={page}
-          onChange={(e, page) => {
-            router.push({
-              pathname: "/products",
-              query: {
-                ...router.query,
-                page,
-              },
-            });
-          }}
-        />
+        <section className="flex justify-center mt-4">
+          <EventPager
+            count={totalItems}
+            page={page}
+            onChange={(e, page) => {
+              router.push({
+                pathname: "/products",
+                query: {
+                  ...router.query,
+                  page,
+                },
+              });
+            }}
+          />
+        </section>
       </div>
     </AdminLayout>
   );

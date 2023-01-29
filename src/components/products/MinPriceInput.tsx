@@ -20,7 +20,6 @@ export const MinPriceInput = () => {
   return (
     <Input
       data-testid="min-price-input"
-      className="w-24"
       type="number"
       value={minPrice}
       onChange={(e) => setMinPrice(e.target.value)}
