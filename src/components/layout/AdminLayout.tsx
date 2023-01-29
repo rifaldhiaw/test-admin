@@ -10,12 +10,12 @@ type AdminLayoutProps = {
 
 const menus = [
   {
-    name: "Product",
+    name: "Products",
     path: "/product",
     icon: Box,
   },
   {
-    name: "Cart",
+    name: "Carts",
     path: "/cart",
     icon: ShoppingCart,
   },
@@ -35,7 +35,7 @@ const AdminLayout = (props: AdminLayoutProps) => {
           {menus.map((menu) => (
             <Link key={menu.name} href={menu.path}>
               <Button
-                variant="link"
+                variant={activeMenu?.name === menu.name ? "subtle" : "link"}
                 className={cn(
                   "h-12 w-full justify-start rounded-lg",
                   activeMenu?.name === menu.name && "bg-slate-100"

@@ -9,7 +9,7 @@ const Tr = ({ children, ...props }: TrProps) => {
   return (
     <tr
       className={cn(
-        "m-0 border-t border-slate-200 p-0 even:bg-slate-100 dark:border-slate-700 dark:even:bg-slate-800",
+        "m-0 border-t border-slate-200 p-0 even:bg-slate-50 dark:border-slate-700 dark:even:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700",
         className
       )}
       {...rest}

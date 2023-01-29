@@ -31,8 +31,56 @@ export default function CartDetailPage() {
 
   return (
     <AdminLayout>
-      <div className="flex flex-col gap-5 justify-center mt-24">
-        <div className="self-stretch">
+      <div className="flex flex-col gap-5 justify-center mt-12">
+        <div>
+          <h2 className="my-4 scroll-m-20 text-xl font-semibold tracking-tight">
+            Cart {cartId}
+          </h2>
+        </div>
+
+        {/* detail section */}
+        <div>
+          <h2 className="my-4 scroll-m-20 text-xl font-semibold tracking-tight">
+            Details
+          </h2>
+
+          <div className="grid grid-cols-2 gap-4 px-12 py-4 bg-slate-100 rounded-xl">
+            <div className="flex">
+              <div className="w-1/3">User</div>
+              <div className="w-2/3">
+                {cartsQuery.data?.body?.userId ?? "..."}
+              </div>
+            </div>
+            <div className="flex">
+              <div className="w-1/3"># of items</div>
+              <div className="w-2/3">
+                {cartsQuery.data?.body?.totalQuantity ?? "..."}
+              </div>
+            </div>
+            <div className="flex">
+              <div className="w-1/3">Added On</div>
+              <div className="w-2/3">
+                {new Date().toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </div>
+            </div>
+            <div className="flex">
+              <div className="w-1/3">Total Amount</div>
+              <div className="w-2/3">
+                {cartsQuery.data?.body?.total ?? "..."}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* products section */}
+        <div>
+          <h2 className="my-4 scroll-m-20 text-xl font-semibold tracking-tight">
+            Products
+          </h2>
           <table className="w-full">
             <thead>
               <Tr className="flex flex-row">
