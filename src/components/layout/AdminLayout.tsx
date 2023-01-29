@@ -1,4 +1,6 @@
+import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import { Box, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -10,10 +12,12 @@ const menus = [
   {
     name: "Product",
     path: "/product",
+    icon: Box,
   },
   {
     name: "Cart",
     path: "/cart",
+    icon: ShoppingCart,
   },
 ];
 
@@ -23,21 +27,26 @@ const AdminLayout = (props: AdminLayoutProps) => {
 
   return (
     <div className="flex flex-row">
-      <div className="w-56 bg-slate-100 h-screen">
-        <ul>
+      <div className="w-56 h-screen border-r border-slate-200 px-4">
+        <div className="flex items-center justify-center h-16 my-14">
+          <h1 className="text-xl font-bold">Admin</h1>
+        </div>
+        <div className="grid gap-4">
           {menus.map((menu) => (
             <Link key={menu.name} href={menu.path}>
-              <li
+              <Button
+                variant="link"
                 className={cn(
-                  "cursor-pointer px-4 py-2 hover:bg-slate-200",
-                  activeMenu?.name === menu.name && "bg-slate-200"
+                  "h-12 w-full justify-start rounded-lg",
+                  activeMenu?.name === menu.name && "bg-slate-100"
                 )}
               >
+                <menu.icon className="w-8 mr-4" />
                 {menu.name}
-              </li>
+              </Button>
             </Link>
           ))}
-        </ul>
+        </div>
       </div>
 
       <div className="flex-1 p-4">{props.children}</div>

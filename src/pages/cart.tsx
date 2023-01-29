@@ -26,7 +26,7 @@ export default function CartPage() {
 
   return (
     <AdminLayout>
-      <div className="flex flex-col gap-5 justify-center items-center mt-24">
+      <div className="flex flex-col gap-5 justify-center items-center mt-16">
         <div className="w-full">
           <table className="w-full">
             <thead>
