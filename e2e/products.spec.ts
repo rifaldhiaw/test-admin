@@ -11,7 +11,7 @@ test("has table", async ({ page }) => {
 const waitForLoading = async (page: Page) => {
   // wait for text "..." inside the table to disappear
   const tableLoader = await page.waitForSelector("table");
-  await tableLoader.waitForSelector("text=...", { state: "hidden" });
+  await tableLoader.waitForSelector("text=Loading...", { state: "hidden" });
 };
 
 test("has required table headers", async ({ page }) => {
@@ -138,6 +138,9 @@ test("should be able to filter products by min price and max price", async ({
     })
   );
 
-  // expect all prices to be between 1000 and 1500
-  expect(prices.every((price) => price >= 1000 && price <= 1500)).toBe(true);
+  const allPricesAreBetween1000And1500 = prices.every(
+    (price) => price >= 1000 && price <= 1500
+  );
+
+  expect(allPricesAreBetween1000And1500).toBe(true);
 });

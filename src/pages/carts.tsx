@@ -9,7 +9,7 @@ import { useState } from "react";
 const count = 10;
 const cartsLoading = Array.from({ length: 10 }, (_, i) => ({
   id: i,
-  userId: "...",
+  userId: "Loading...",
   discountedTotal: "...",
   totalProducts: "...",
   totalQuantity: "...",

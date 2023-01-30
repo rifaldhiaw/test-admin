@@ -15,7 +15,7 @@ const count = 10;
 
 const productsLoading = Array.from({ length: count }, (_, i) => ({
   id: i,
-  title: "...",
+  title: "Loading...",
   brand: "...",
   price: "...",
   stock: "...",

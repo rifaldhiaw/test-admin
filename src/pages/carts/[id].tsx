@@ -12,7 +12,7 @@ const productsLoading: ProductInCart[] = Array.from(
   { length: count },
   (_, i) => ({
     id: i,
-    title: "...",
+    title: "Loading...",
     price: 0,
     discountedPrice: 0,
     discountPercentage: 0,
@@ -50,7 +50,7 @@ export default function CartDetailPage() {
   const detailData = [
     {
       label: "User",
-      value: userQuery.isSuccess ? userFullName : "...",
+      value: userQuery.isSuccess ? userFullName : "Loading...",
     },
     {
       label: "# of items",
@@ -77,7 +77,10 @@ export default function CartDetailPage() {
       {/* detail section */}
       <section>
         <H4>Details</H4>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 px-12 py-4 bg-slate-100 rounded-xl">
+        <div
+          data-testid="cart-details"
+          className="grid grid-cols-1 md:grid-cols-2 gap-2 px-12 py-4 bg-slate-100 rounded-xl"
+        >
           {detailData.map((item) => (
             <div key={item.label} className="flex">
               <div className="w-1/3 font-semibold">{item.label}</div>
