@@ -14,13 +14,15 @@ const getAndCacheExternalProducts = async () => {
     data.products,
     PRODUCT_CACHE_HOUR * 1000 * 60 * 60
   );
+
+  return data.products;
 };
 
 const productsRouter = createNextRoute(productContract, {
   getProducts: async (args) => {
-    const dataInMemory: Product[] = cacheData.get(PRODUCT_CACHE_KEY) || [];
+    let dataInMemory: Product[] = cacheData.get(PRODUCT_CACHE_KEY) || [];
     if (dataInMemory.length === 0) {
-      await getAndCacheExternalProducts();
+      dataInMemory = await getAndCacheExternalProducts();
     }
 
     let products = dataInMemory;
