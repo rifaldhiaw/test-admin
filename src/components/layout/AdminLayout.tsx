@@ -31,7 +31,7 @@ const AdminLayout = (props: AdminLayoutProps) => {
         className={cn(
           "flex flex-row sm:flex-col items-center",
           "fixed bottom-0 sm:top-0 left-0",
-          "h-20 sm:h-screen w-screen sm:w-24 lg:w-56",
+          "h-14 sm:h-screen w-screen sm:w-24 lg:w-56",
           "border-t sm:border-r border-slate-200 dark:border-slate-700",
           "px-4",
           "bg-white dark:bg-slate-900"
@@ -69,14 +69,16 @@ const AdminLayout = (props: AdminLayoutProps) => {
               <Button
                 variant={activeMenu?.name === menu.name ? "subtle" : "link"}
                 className={cn(
-                  "flex flex-col lg:flex-row gap-1",
+                  "flex flex-col lg:flex-row",
                   "h-auto w-full",
-                  "justify-start rounded-lg px-2 py-4 lg:px-4",
+                  "py-0 md:py-4 px-2 lg:px-4",
+                  "justify-start",
+                  "rounded-lg",
                   activeMenu?.name === menu.name && "bg-slate-100"
                 )}
               >
-                <menu.icon className="w-8" />
-                <span className="text-xs lg:text-base lg:ml-2">
+                <menu.icon className="w-4 md:w-8" />
+                <span className="text-[8px] lg:text-base lg:ml-2">
                   {menu.name}
                 </span>
               </Button>
