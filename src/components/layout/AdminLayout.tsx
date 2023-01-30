@@ -31,6 +31,7 @@ const AdminLayout = (props: AdminLayoutProps) => {
       <Head>
         <title>Test Admin</title>
       </Head>
+      <MobilePortraitHeader />
       <div
         className={cn(
           "flex flex-row sm:flex-col items-center",
@@ -41,26 +42,7 @@ const AdminLayout = (props: AdminLayoutProps) => {
           "bg-white dark:bg-slate-900"
         )}
       >
-        <div
-          className={cn(
-            "flex items-center justify-center",
-            "h-8 lg:h-16 mt-20 mb-12",
-            "hidden sm:block"
-          )}
-        >
-          <h1
-            className="hidden lg:block text-xl font-bold cursor-pointer"
-            onClick={() => router.push("/")}
-          >
-            Admin
-          </h1>
-          <h1
-            className="lg:hidden text-3xl font-bold cursor-pointer"
-            onClick={() => router.push("/")}
-          >
-            A
-          </h1>
-        </div>
+        <TitleHeader />
         <div
           className={cn(
             "flex-1",
@@ -92,9 +74,53 @@ const AdminLayout = (props: AdminLayoutProps) => {
         </div>
       </div>
 
-      <div className={cn("mb-24 md:mb-0", "sm:ml-24 lg:ml-56", "p-4 lg:p-8")}>
+      <div className={cn("sm:ml-24 lg:ml-56", "px-4 lg:px-8", "py-20 md:py-4")}>
         {props.children}
       </div>
+    </div>
+  );
+};
+
+const MobilePortraitHeader = () => {
+  const router = useRouter();
+
+  return (
+    <h1
+      className={cn(
+        "block sm:hidden fixed top-0 left-0 right-0 w-screen bg-white py-4 text-xl font-bold cursor-pointer",
+        "border-b border-slate-200 dark:border-slate-700",
+        "text-center"
+      )}
+      onClick={() => router.push("/")}
+    >
+      Admin
+    </h1>
+  );
+};
+
+const TitleHeader = () => {
+  const router = useRouter();
+
+  return (
+    <div
+      className={cn(
+        "flex items-center justify-center",
+        "h-8 lg:h-16 mt-20 mb-12",
+        "hidden sm:block"
+      )}
+    >
+      <h1
+        className="hidden lg:block text-xl font-bold cursor-pointer"
+        onClick={() => router.push("/")}
+      >
+        Admin
+      </h1>
+      <h1
+        className="lg:hidden text-3xl font-bold cursor-pointer"
+        onClick={() => router.push("/")}
+      >
+        A
+      </h1>
     </div>
   );
 };
