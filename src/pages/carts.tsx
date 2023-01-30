@@ -2,6 +2,7 @@ import { cartApi } from "@/apis/apis";
 import { AdminLayout } from "@/components/layout/AdminLayout";
 import { EventPager } from "@/components/ui/Pagination";
 import { Td, Th, Tr } from "@/components/ui/Table";
+import { cn } from "@/lib/utils";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
@@ -36,40 +37,40 @@ export default function CartPage() {
 
   return (
     <AdminLayout>
-      <div className="flex flex-col gap-5 items-center mt-16">
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <Tr className="flex flex-row">
-                <Th className="flex items-center w-12 md:w-24">Id</Th>
-                <Th className="flex items-center w-24 md:flex-1">User Id</Th>
-                <Th className="flex items-center w-32 md:flex-1">
-                  Discounted Total
-                </Th>
-                <Th className="flex items-center flex-1">Total Products</Th>
-                <Th className="flex items-center flex-1">Total Quantity</Th>
+      <section className={cn("overflow-x-auto", "md:mt-6 lg:mt-12")}>
+        <table className="w-full">
+          <thead>
+            <Tr className="flex flex-row">
+              <Th className="flex items-center w-12 md:w-24">Id</Th>
+              <Th className="flex items-center w-24 md:flex-1">User Id</Th>
+              <Th className="flex items-center w-32 md:flex-1">
+                Discounted Total
+              </Th>
+              <Th className="flex items-center flex-1">Total Products</Th>
+              <Th className="flex items-center flex-1">Total Quantity</Th>
+            </Tr>
+          </thead>
+          <tbody>
+            {(cartsQuery.data?.body.carts ?? cartsLoading).map((cart) => (
+              <Tr
+                key={cart.id}
+                className="flex flex-row cursor-pointer"
+                onClick={() => {
+                  router.push(`/carts/${cart.id}`);
+                }}
+              >
+                <Td className="w-12 md:w-24">{cart.id}</Td>
+                <Td className="w-24 md:flex-1">{cart.userId}</Td>
+                <Td className="w-32 md:flex-1">{cart.discountedTotal}</Td>
+                <Td className="flex-1">{cart.totalProducts}</Td>
+                <Td className="flex-1">{cart.totalQuantity}</Td>
               </Tr>
-            </thead>
-            <tbody>
-              {(cartsQuery.data?.body.carts ?? cartsLoading).map((cart) => (
-                <Tr
-                  key={cart.id}
-                  className="flex flex-row cursor-pointer"
-                  onClick={() => {
-                    router.push(`/carts/${cart.id}`);
-                  }}
-                >
-                  <Td className="w-12 md:w-24">{cart.id}</Td>
-                  <Td className="w-24 md:flex-1">{cart.userId}</Td>
-                  <Td className="w-32 md:flex-1">{cart.discountedTotal}</Td>
-                  <Td className="flex-1">{cart.totalProducts}</Td>
-                  <Td className="flex-1">{cart.totalQuantity}</Td>
-                </Tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
+      </section>
 
+      <section className="flex justify-center mt-4">
         <EventPager
           count={totalItems}
           page={page}
@@ -77,7 +78,7 @@ export default function CartPage() {
             router.push(`/carts?page=${page}`);
           }}
         />
-      </div>
+      </section>
     </AdminLayout>
   );
 }
