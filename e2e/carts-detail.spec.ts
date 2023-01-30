@@ -20,7 +20,6 @@ test("has required details", async ({ page }) => {
   // find test data-testid "cart-details"
   const details = page.getByTestId("cart-details");
   const detailsText = await details.innerText();
-  console.log(detailsText);
 
   expect(detailsText).toContain("User");
   expect(detailsText).toContain("Added On");
