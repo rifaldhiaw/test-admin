@@ -61,7 +61,8 @@ const AdminLayout = (props: AdminLayoutProps) => {
           className={cn(
             "flex-1",
             "flex flex-row sm:flex-col gap-4",
-            "justify-evenly sm:justify-start"
+            "justify-evenly sm:justify-start",
+            "bg-white"
           )}
         >
           {menus.map((menu) => (
