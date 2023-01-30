@@ -99,7 +99,7 @@ export default function ProductPage() {
                 <Th className="w-64 flex-auto">Brand</Th>
                 <Th className="w-20">Price</Th>
                 <Th className="w-20">Stock</Th>
-                <Th className="w-32">Category</Th>
+                <Th className="w-52">Category</Th>
               </Tr>
             </thead>
             <tbody>
@@ -110,7 +110,7 @@ export default function ProductPage() {
                     <Td className="w-64 flex-auto">{product.brand}</Td>
                     <Td className="w-20">{product.price}</Td>
                     <Td className="w-20">{product.stock}</Td>
-                    <Td className="w-32">{product.category}</Td>
+                    <Td className="w-52">{product.category}</Td>
                   </Tr>
                 )
               )}

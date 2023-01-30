@@ -1,6 +1,8 @@
 import { cartApi, userApi } from "@/apis/apis";
 import { ProductInCart } from "@/apis/contracts/cartContract";
 import { AdminLayout } from "@/components/layout/AdminLayout";
+import { H3 } from "@/components/ui/H3";
+import { H4 } from "@/components/ui/H4";
 import { Td, Th, Tr } from "@/components/ui/Table";
 import { useRouter } from "next/router";
 
@@ -45,88 +47,86 @@ export default function CartDetailPage() {
     userQuery.data?.body?.lastName ?? ""
   }`;
 
+  const detailData = [
+    {
+      label: "User",
+      value: userQuery.isSuccess ? userFullName : "...",
+    },
+    {
+      label: "# of items",
+      value: cartsQuery.data?.body?.totalQuantity ?? "...",
+    },
+    {
+      label: "Added On",
+      value: new Date().toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
+    },
+    {
+      label: "Total",
+      value: cartsQuery.data?.body?.total ?? "...",
+    },
+  ];
+
   return (
     <AdminLayout>
-      <div className="flex flex-col gap-5 justify-center mt-12">
-        <div>
-          <h2 className="my-4 scroll-m-20 text-xl font-semibold tracking-tight">
-            Cart {cartId}
-          </h2>
+      <H3>Cart {cartId}</H3>
+
+      {/* detail section */}
+      <section>
+        <H4>Details</H4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 px-12 py-4 bg-slate-100 rounded-xl">
+          {detailData.map((item) => (
+            <div key={item.label} className="flex">
+              <div className="w-1/3 font-semibold">{item.label}</div>
+              <div className="w-2/3">{item.value}</div>
+            </div>
+          ))}
         </div>
+      </section>
 
-        {/* detail section */}
-        <div>
-          <h2 className="my-4 scroll-m-20 text-xl font-semibold tracking-tight">
-            Details
-          </h2>
-
-          <div className="grid grid-cols-2 gap-4 px-12 py-4 bg-slate-100 rounded-xl">
-            <div className="flex">
-              <div className="w-1/3">User</div>
-              <div className="w-2/3">
-                {userQuery.isSuccess ? userFullName : "..."}
-              </div>
-            </div>
-            <div className="flex">
-              <div className="w-1/3"># of items</div>
-              <div className="w-2/3">
-                {cartsQuery.data?.body?.totalQuantity ?? "..."}
-              </div>
-            </div>
-            <div className="flex">
-              <div className="w-1/3">Added On</div>
-              <div className="w-2/3">
-                {new Date().toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </div>
-            </div>
-            <div className="flex">
-              <div className="w-1/3">Total Amount</div>
-              <div className="w-2/3">
-                {cartsQuery.data?.body?.total ?? "..."}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* products section */}
-        <div>
-          <h2 className="my-4 scroll-m-20 text-xl font-semibold tracking-tight">
-            Products
-          </h2>
+      {/* products section */}
+      <section>
+        <H4>Products</H4>
+        <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <Tr className="flex flex-row">
-                <Th className="w-24">Id</Th>
-                <Th className="flex-1">Product Name</Th>
-                <Th className="w-36">Price</Th>
-                <Th className="w-36">Discount %</Th>
-                <Th className="w-36">Discount</Th>
-                <Th className="w-36">Quantity</Th>
-                <Th className="w-36">Total</Th>
+                <Th className="w-14">Id</Th>
+                <Th className="w-72 flex-auto">Product Name</Th>
+                <Th className="w-24 flex-auto">Price</Th>
+                <Th className="w-32 flex-auto">Discount %</Th>
+                <Th className="w-24 flex-auto">Discount</Th>
+                <Th className="w-24 flex-auto">Quantity</Th>
+                <Th className="w-24 flex-auto">Total</Th>
               </Tr>
             </thead>
             <tbody className="w-full">
               {(cartsQuery.data?.body?.products ?? productsLoading).map(
                 (product) => (
                   <Tr key={product.id} className="flex flex-row">
-                    <Td className="w-24">{product.id}</Td>
-                    <Td className="flex-1">{product.title}</Td>
-                    <Td className="w-36">{product.price}</Td>
-                    <Td className="w-36">{product.discountPercentage}</Td>
-                    <Td className="w-36">{product.discountedPrice}</Td>
-                    <Td className="w-36">{product.quantity}</Td>
-                    <Td className="w-36">{product.total}</Td>
+                    <Td className="w-14">{product.id}</Td>
+                    <Td className="w-72 flex-auto">{product.title}</Td>
+                    <Td className="w-24 flex-auto">{product.price}</Td>
+                    <Td className="w-32 flex-auto">
+                      {product.discountPercentage}
+                    </Td>
+                    <Td className="w-24 flex-auto">
+                      {product.discountedPrice}
+                    </Td>
+                    <Td className="w-24 flex-auto">{product.quantity}</Td>
+                    <Td className="w-24 flex-auto">{product.total}</Td>
                   </Tr>
                 )
               )}
             </tbody>
           </table>
         </div>
-      </div>
+      </section>
+
+      <div className="h-12"></div>
     </AdminLayout>
   );
 }
