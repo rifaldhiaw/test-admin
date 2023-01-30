@@ -1,8 +1,8 @@
 import { cartApi, userApi } from "@/apis/apis";
 import { ProductInCart } from "@/apis/contracts/cartContract";
 import { AdminLayout } from "@/components/layout/AdminLayout";
+import { H2 } from "@/components/ui/H2";
 import { H3 } from "@/components/ui/H3";
-import { H4 } from "@/components/ui/H4";
 import { Td, Th, Tr } from "@/components/ui/Table";
 import { useRouter } from "next/router";
 
@@ -72,11 +72,11 @@ export default function CartDetailPage() {
 
   return (
     <AdminLayout>
-      <H3>Cart {cartId}</H3>
+      <H2>Cart {cartId}</H2>
 
       {/* detail section */}
       <section>
-        <H4>Details</H4>
+        <H3>Details</H3>
         <div
           data-testid="cart-details"
           className="grid grid-cols-1 md:grid-cols-2 gap-2 px-12 py-4 bg-slate-100 rounded-xl"
@@ -92,7 +92,7 @@ export default function CartDetailPage() {
 
       {/* products section */}
       <section>
-        <H4>Products</H4>
+        <H3>Products</H3>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>

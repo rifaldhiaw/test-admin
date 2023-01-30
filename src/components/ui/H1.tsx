@@ -1,19 +1,19 @@
 import { cn } from "@/lib/utils";
 import { PropsWithChildren } from "react";
 
-type H3Props = PropsWithChildren<{
+type H1Props = PropsWithChildren<{
   className?: string;
 }>;
 
-export const H3 = (props: H3Props) => {
+export const H1 = (props: H1Props) => {
   return (
-    <h3
+    <h1
       className={cn(
-        "mt-8 mb-4 scroll-m-20 text-lg font-semibold tracking-tight",
+        "scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl",
         props.className
       )}
     >
       {props.children}
-    </h3>
+    </h1>
   );
 };

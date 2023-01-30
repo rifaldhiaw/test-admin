@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { Box, ShoppingCart } from "lucide-react";
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -27,6 +28,9 @@ const AdminLayout = (props: AdminLayoutProps) => {
 
   return (
     <div>
+      <Head>
+        <title>Test Admin</title>
+      </Head>
       <div
         className={cn(
           "flex flex-row sm:flex-col items-center",
@@ -40,7 +44,7 @@ const AdminLayout = (props: AdminLayoutProps) => {
         <div
           className={cn(
             "flex items-center justify-center",
-            "h-8 lg:h-16 my-14",
+            "h-8 lg:h-16 mt-20 mb-12",
             "hidden sm:block"
           )}
         >
